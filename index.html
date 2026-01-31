@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Validation</title>
+</head>
+<style>
+    body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 400px;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            resize: none;
+            box-sizing: border-box;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .counter {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+            transition: color 0.3s ease;
+        }
+
+        .warning {
+            color: #dc2626;
+        }
+
+
+</style>
+<body>
+
+    <div class="container">
+        <h2>Live Charecter Counter</h2>
+         <textarea
+            id="textInput"
+            placeholder="Type your text here..."
+            maxlength="100"
+            oninput="countChars()"
+        ></textarea>
+
+        <p id="counter" class="counter">0 / 100 characters</p>
+    </div>
+    </div>
+
+    <script>
+        function countChars() {
+            const text = document.getElementById('textInput').value;
+            const counter = document.getElementById('counter'); 
+            const maxLength = 100;
+            const currentLength = text.length;
+            counter.textContent = `${currentLength} / ${maxLength} characters`;
+
+            if (currentLength > maxLength) {
+                counter.classList.add('warning');
+            } else {
+                counter.classList.remove('warning');
+            }
+        }
+    </script>
+
+    
+</body>
+</html>
